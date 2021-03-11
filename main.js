@@ -34,14 +34,11 @@ client.on("ready", () => {
     console.log(`Ready to serve on ${client.guilds.cache.size} servers, for ${client.users.cache.size} users.`);
   });
 
-let prefix = config.prefix;
-
   client.on("message", (message) => {
 
+    if(message.content.indexOf(config.prefix) !== 0 || message.author.bot) return;
 
-    if(message.content.indexOf(prefix) !== 0 || message.author.bot) return;
-
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
   
 
