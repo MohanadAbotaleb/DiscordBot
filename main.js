@@ -1,12 +1,13 @@
 const Discord = require('discord.js');
-require('dotenv').config();
+const config = require('./config.json');
 
 const client = new Discord.Client();
 client.on('ready', () => {
     console.log('bot is ready!');
   });
   
-  const prefix = "g!";
+let prefix = config.prefix;
+
   client.on("message", (message) => {
     if(!msg.content.startsWith(prefix) || message.author.bot) return;
     if (message.content.startsWith(prefix + "ping")) {
@@ -18,4 +19,4 @@ client.on('ready', () => {
 
 
   
-client.login(process.env.TOKEN);
+client.login(config.token);
